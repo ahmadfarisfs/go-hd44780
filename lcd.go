@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/d2r2/go-i2c"
+	"github.com/ahmadfarisfs/go-i2c"
 )
 
 const (
@@ -116,7 +116,7 @@ func (this *Lcd) writeDataWithStrobe(data byte) error {
 		data |= PIN_BACKLIGHT
 	}
 	seq := []rawData{
-		{data, 0}, // send data
+		{data, 0},                               // send data
 		{data | PIN_EN, 200 * time.Microsecond}, // set strobe
 		{data, 30 * time.Microsecond},           // reset strobe
 	}
