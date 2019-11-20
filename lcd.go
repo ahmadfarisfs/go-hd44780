@@ -2,7 +2,6 @@ package hd44780
 
 import (
 	"fmt"
-	"log"
 	"strings"
 	"time"
 
@@ -198,7 +197,7 @@ func (this *Lcd) splitText(text string, options ShowOptions) []string {
 
 func (this *Lcd) ShowMessage(text string, options ShowOptions) error {
 	lines := this.splitText(text, options)
-	log.Println("Output: %v\n", lines)
+	//log.Println("Output: %v\n", lines)
 	startLine, endLine := this.getLineRange(options)
 	i := 0
 	for {
