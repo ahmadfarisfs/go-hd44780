@@ -115,10 +115,15 @@ func (this *Lcd) writeDataWithStrobe(data byte) error {
 	if this.backlight {
 		data |= PIN_BACKLIGHT
 	}
-	seq := []rawData{
+	/*seq := []rawData{
 		{data, 0},                               // send data
 		{data | PIN_EN, 250 * time.Microsecond}, // set strobe
 		{data, 50 * time.Microsecond},           // reset strobe
+	}*/
+	seq := []rawData{
+		{data, 0},                                // send data
+		{data | PIN_EN, 5000 * time.Microsecond}, // set strobe
+		{data, 5000 * time.Microsecond},          // reset strobe
 	}
 	return this.writeRawDataSeq(seq)
 }
